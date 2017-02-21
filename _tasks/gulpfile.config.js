@@ -28,11 +28,16 @@ module.exports = {
         dev: dev + 'css',
         dist: dist + 'css'
     },
+    css: {
+        src: src + 'css/**/*.css',
+        dev: dev + 'css',
+        dist: dist + 'css'
+    },
     js: {
         src: src + 'js/**/*.js',
         dev: dev + 'js',
         dist: dist + 'js',
-        build_name: build.js
+        build_name: 'build.js'
     },
     img: {
         src: src + 'img/**/*',
