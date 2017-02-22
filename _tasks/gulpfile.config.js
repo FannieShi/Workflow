@@ -1,6 +1,6 @@
 var src = './src/',
-    dev = './dev',
-    dist = './dist',
+    dev = './dev/',
+    dist = './dist/',
     dist_files = dist + '**';
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
         src: src + 'js/**/*.js',
         dev: dev + 'js',
         dist: dist + 'js',
-        build_name: 'build.js'
+        build_name: 'index.js'
     },
     img: {
         src: src + 'img/**/*',
@@ -45,8 +45,8 @@ module.exports = {
         dist: dist + 'img'
     },
     sprite: {
-        src: src + 'slice/**/*',
-        dev: dev + 'slice',
+        src: src + 'sprite/**/*',
+        dev: dev + 'sprite',
         dist: dist + 'sprite'
     }
 };

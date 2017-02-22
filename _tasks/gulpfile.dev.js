@@ -1,21 +1,18 @@
+/**
+ *  gulp dev 开发环境下
+ */
 var gulp = require('gulp'),
-    autoprefixer = require('gulp-autoprefixer'),               //处理CSS中浏览器兼容的前缀
     rename = require('gulp-rename'),                           //重命名
-    cssnano = require('gulp-cssnano'),                         //CSS的层级压缩合并
     sass = require('gulp-sass'),                               //Sass
     less = require('gulp-less'),                               //Less
     jshint = require('gulp-jshint'),                           //js检查
-    uglify = require('gulp-uglify'),                           //js压缩
     concat = require('gulp-concat'),                           //合并文件
     imagemin = require('gulp-imagemin'),                       //图片压缩
-    sprity = require('sprity'),
     del = require('del'),
     browserSync = require('browser-sync').create(),
     reload = browserSync.reload,
     Config = require('./gulpfile.config.js');
-/**
- *  gulp dev 开发环境下
- */
+
 module.exports = function () {
     /**
      * HTML处理
@@ -96,7 +93,7 @@ module.exports = function () {
     function watch(){
         browserSync.init({
             server: {
-                baseDir: Config.dist
+                baseDir: Config.dev
             },
             notify: false
         });

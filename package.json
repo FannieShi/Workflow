@@ -15,15 +15,14 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.2",
+    "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.1.1",
     "gulp-jshint": "^2.0.4",
     "gulp-less": "^3.3.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
+    "gulp-tmtsprite": "^0.0.22",
     "gulp-uglify": "^2.0.1",
     "jshint": "^2.9.4"
-  },
-  "dependencies": {
-    "sprity": "^1.0.8"
   }
 }
