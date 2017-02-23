@@ -36,7 +36,7 @@ module.exports = function () {
      */
     function compileCss(){
         return gulp.src(Config.css.src)
-            .pipe(autoprefixer('last 2 version'))
+            .pipe(autoprefixer({browsers: ['last 2 versions', 'Android >= 4.0']}))
             .pipe(gulp.dest(Config.css.dist))
             .pipe(rename({ suffix: '.min'}))
             .pipe(cssnano())
@@ -47,11 +47,8 @@ module.exports = function () {
      */
     function compileSass() {
         return gulp.src(Config.sass.src)
-            .pipe(autoprefixer('last 2 version'))
+            .pipe(autoprefixer({browsers: ['last 2 versions', 'Android >= 4.0']}))
             .pipe(sass())
-            .pipe(gulp.dest(Config.sass.dist))
-            .pipe(rename({ suffix: '.min'}))
-            .pipe(cssnano())
             .pipe(gulp.dest(Config.sass.dist));
     };
     /**
@@ -59,13 +56,21 @@ module.exports = function () {
      */
     function compileLess() {
         return gulp.src(Config.less.src)
-            .pipe(autoprefixer('last 2 version'))
+            .pipe(autoprefixer({browsers: ['last 2 versions', 'Android >= 4.0']}))
             .pipe(less())
-            .pipe(gulp.dest(Config.less.dist))
-            .pipe(rename({suffix: '.min'}))
+            .pipe(rename({ suffix: '.min'}))
             .pipe(cssnano())
             .pipe(gulp.dest(Config.less.dist));
     };
+    /**
+     * 压缩所有的CSS文件
+     */
+    function minCss() {
+        return gulp.src(Config.css.dist + '/**/*.css')
+            .pipe(rename({ suffix: '.min'}))
+            .pipe(cssnano())
+            .pipe(gulp.dest(Config.css.dist));
+    }
     /**
      * js 处理
      */
@@ -103,26 +108,30 @@ module.exports = function () {
      * 雪碧图处理
      */
     function compileSprite() {
-        return gulp.src(Config.css.src)
+        return gulp.src(Config.css.dev + '/**/*.css')
             .pipe(tmtsprite({slicePath: '../sprite'}))
             .pipe(gulpif('*.png', gulp.dest(Config.sprite.dist), gulp.dest(Config.css.dist)));
     };
     /**
      * 清空文件
      */
-    gulp.task('delDist', function () {
+    function delDist(){
         return del(Config.dist);
-    });
+    }
 
-    gulp.task('build_dist', ['delDist'], function () {
-        copyHtml();
-        copyPlugins();
-        compileCss();
-        compileImg();
-        compileJs();
-        compileLess();
-        compileSass();
-        compileSprite();
-        concatJs();
-    })
+    gulp.task('build_dist', gulp.series(
+        delDist,
+        gulp.parallel(
+            copyPlugins,
+            copyHtml,
+            compileImg,
+            compileSass,
+            compileLess,
+            compileCss,
+            concatJs
+        ),
+        compileJs,
+        compileSprite,
+        minCss
+    ))
 }

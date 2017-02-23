@@ -24,5 +24,10 @@
   "laxcomma": false,
   "loopfunc": true,
   "onevar": false,
-  "unused": true
+  "unused": true,
+  "browser": true,
+  "globals": {
+    "$": false,
+    "jquery": false
+  }
 }

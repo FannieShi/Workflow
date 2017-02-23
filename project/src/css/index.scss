@@ -1,0 +1,53 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  padding: 100px 0;
+  font-family: 'Georgia', Helvetica, Arial, "微软雅黑", sans-serif;
+}
+
+$blue: #7dabdf;
+$icoWidth: 32px;
+$icoHeight: 32px;
+$inputPad: 20px;
+
+.input {
+  position: relative;
+  width: 280px;
+  margin: 0 auto 10px auto;
+}
+.input input {
+  width: 100%;
+  padding-left: $icoWidth + $inputPad;
+  padding-right: $inputPad;
+  height: 40px;
+  border: none;
+  border: 1px solid $blue;
+  color: $blue;
+}
+.icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  will-change: transform;
+  transform: translate(0, -50%) scale(.5);
+  width: $icoWidth;
+  height: $icoHeight;
+  background-repeat: no-repeat;
+}
+.account {
+  background-image: url("../sprite/account.png");
+}
+.email {
+  background-image: url("../sprite/email.png");
+}
+.github {
+  background-image: url("../sprite/github.png");
+}
+.map {
+  background-image: url("../sprite/map.png");
+}

@@ -19,7 +19,7 @@ module.exports = {
         dist: dist + 'plugins'
     },
     sass: {
-        src: src + 'css/**/*.sass',
+        src: src + 'css/**/*.scss',
         dev: dev + 'css',
         dist: dist + 'css'
     },

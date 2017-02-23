@@ -1,0 +1,47 @@
+@charset "UTF-8";
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  padding: 100px 0;
+  font-family: 'Georgia', Helvetica, Arial, "微软雅黑", sans-serif; }
+
+.input {
+  position: relative;
+  width: 280px;
+  margin: 0 auto 10px auto; }
+
+.input input {
+  width: 100%;
+  padding-left: 52px;
+  padding-right: 20px;
+  height: 40px;
+  border: none;
+  border: 1px solid #7dabdf;
+  color: #7dabdf; }
+
+.icon {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  will-change: transform;
+  transform: translate(0, -50%) scale(0.5);
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat; }
+
+.account {
+  background-image: url("../sprite/account.png"); }
+
+.email {
+  background-image: url("../sprite/email.png"); }
+
+.github {
+  background-image: url("../sprite/github.png"); }
+
+.map {
+  background-image: url("../sprite/map.png"); }

@@ -84,6 +84,7 @@ module.exports = function () {
      */
     function copySprite(){
         return gulp.src(Config.sprite.src)
+            .pipe(imagemin())
             .pipe(gulp.dest(Config.sprite.dev))
             .pipe(reload({stream: true}));
     }
@@ -109,20 +110,22 @@ module.exports = function () {
     /**
      * 清空文件
      */
-
-    gulp.task('delDev', function () {
+    function delDev() {
         return del([Config.dev]);
-    });
+    }
 
-    gulp.task('build_dev', ['delDev'], function () {
-        copyCss();
-        copyPlugins();
-        copySprite();
-        compileImg();
-        compileJs();
-        compileLess();
-        compileSass();
-        copyHtml();
-        watch();
-    });
+    gulp.task('build_dev', gulp.series(
+        delDev,
+        gulp.parallel(
+            copyCss,
+            copyPlugins,
+            copyHtml,
+            copySprite,
+            compileSass,
+            compileLess,
+            compileJs,
+            compileImg
+        ),
+        watch
+    ));
 };
