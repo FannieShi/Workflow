@@ -66,7 +66,7 @@ module.exports = function () {
      * 压缩所有的CSS文件
      */
     function minCss() {
-        return gulp.src(Config.css.dist + '/**/*.css')
+        return gulp.src([Config.css.dist + '/**/*.css', '!' + Config.css.dist +'/**/*.min.css'])
             .pipe(rename({ suffix: '.min'}))
             .pipe(cssnano())
             .pipe(gulp.dest(Config.css.dist));
